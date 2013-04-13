@@ -1,0 +1,20 @@
+//
+//  ShowXray.h
+//  TestProject
+//
+//  Created by Team Ganda on 4/3/13.
+//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "Report.h"
+
+@interface ShowXray : UITableViewController
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) Report *report;
+@property (weak, nonatomic) IBOutlet UITextField *typeInput;
+@property (weak, nonatomic) IBOutlet UITextField *notesInput;
+@property (weak, nonatomic) IBOutlet UITextField *r1;
+
+@end

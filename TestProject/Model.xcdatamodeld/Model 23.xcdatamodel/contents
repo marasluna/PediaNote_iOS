@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="872" systemVersion="10K549" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Appointment" representedClassName="Appointment" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="appointment" inverseEntity="Patient" syncable="YES"/>
+    </entity>
+    <entity name="Clinic" representedClassName="Clinic" syncable="YES">
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="schedule" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Consultation" representedClassName="Consultation" syncable="YES">
+        <attribute name="assessment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objective" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plan" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subjective" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="consultation" inverseEntity="Patient" syncable="YES"/>
+    </entity>
+    <entity name="Doctor" representedClassName="Doctor" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isLoggedIn" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="History" representedClassName="History" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="illness" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="history" inverseEntity="Patient" syncable="YES"/>
+    </entity>
+    <entity name="Parent" representedClassName="Parent" syncable="YES">
+        <attribute name="cellphone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="patient" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="parent" inverseEntity="Patient" syncable="YES"/>
+    </entity>
+    <entity name="Patient" representedClassName="Patient" syncable="YES">
+        <attribute name="abdominalCircum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthdate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="birthHeight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthWeight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bloodtype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="chestCircum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="delivery" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="headCircum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="middleName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="term" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="appointment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="patient" inverseEntity="Appointment" syncable="YES"/>
+        <relationship name="consultation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Consultation" inverseName="patient" inverseEntity="Consultation" syncable="YES"/>
+        <relationship name="history" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="History" inverseName="patient" inverseEntity="History" syncable="YES"/>
+        <relationship name="parent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Parent" inverseName="patient" inverseEntity="Parent" syncable="YES"/>
+        <relationship name="report" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Report" inverseName="patient" inverseEntity="Report" syncable="YES"/>
+    </entity>
+    <entity name="Report" representedClassName="Report" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="exam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="result" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="report" inverseEntity="Patient" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Appointment" positionX="-63" positionY="333" width="128" height="105"/>
+        <element name="Clinic" positionX="250" positionY="348" width="128" height="75"/>
+        <element name="Consultation" positionX="-207" positionY="-243" width="128" height="165"/>
+        <element name="Doctor" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="History" positionX="0" positionY="-135" width="128" height="120"/>
+        <element name="Parent" positionX="-36" positionY="177" width="128" height="120"/>
+        <element name="Patient" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="Report" positionX="385" positionY="-108" width="128" height="150"/>
+    </elements>
+</model>
